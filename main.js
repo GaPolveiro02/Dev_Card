@@ -1,10 +1,16 @@
 const url = 'https://api.github.com/users/'
 
+function searchUser() {
+    const inputValue = document.querySelector('#input').value
+
+    console.log(inputValue)
+    getUser(inputValue)
+}
+
 function getUser(user) {
     fetch(`${url}${user}`)
      .then(response => response.json())
      .then(data => {
-         console.log(JSON.stringify(data))
             userName.textContent = data.name
             devUser.textContent = data.login
             userAvatar.src = data.avatar_url
