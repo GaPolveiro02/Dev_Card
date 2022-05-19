@@ -17,6 +17,9 @@ function getUser(user) {
             userRepos.textContent = `Public repositories ${data.public_repos}`
             userFollowers.textContent = `Followers ${data.followers}`
             userFollowing.textContent = `Following ${data.following}`
+            if(data.location != null){
+                userLocation.textContent = `Location: ${data.location}`
+            }
         })
      .catch(error => console.log(error))
 }

@@ -4,23 +4,25 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dev card</title>
+    <link rel="stylesheet" href="style.css">
+    <title>< DevCard /></title>
 </head>
 <body>
-    <head>
-        <h1>Dev Card</h1>
-        <input id="input" type="text" placeholder="Search dev in github">
-        <button onclick="searchUser()">Search</button>
-    </head>
+    <header>
+        <h1>< <strong>Dev</strong>Card /<strong>></strong></h1>
+        <div>
+            <input id="input" type="text" placeholder="Search dev in github">
+            <button onclick="searchUser()">Search</button>
+        </div>
+    </header>
 
     <main>
-        <div id="Card">
+        <div id="card">
             <h2 id="devUser"></h2>
-            <hr>
             <img id="userAvatar" src="" alt="User Avatar">
-            <hr>
-            <div>
+            <div id="profileInfo">
                 <p id="userName"></p>
+                <p id="userLocation"></p>
                 <p id="userRepos"></p>
                 <p id="userFollowers"></p>
                 <p id="userFollowing"></p>
@@ -29,7 +31,7 @@
     </main>
 
     <footer>
-        <p>Made by <a href="https://github.com/GaPolveiro02">GaPolveiro02</a></p>
+        <p>Made by <strong><a href="https://github.com/GaPolveiro02">GaPolveiro02 <img src="./assets/img/github.svg" alt="" srcset=""></a></strong></p>
     </footer>
 </body>
 <script src="main.js"></script>
