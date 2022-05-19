@@ -4,7 +4,11 @@ function searchUser() {
     const inputValue = document.querySelector('#input').value
 
     console.log(inputValue)
-    getUser(inputValue)
+    if (inputValue != '') {
+        getUser(inputValue)
+    } else {
+        alert('digite um usuário valido do gitHub')
+    }
 }
 
 function getUser(user) {
