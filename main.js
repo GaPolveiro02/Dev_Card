@@ -6,6 +6,7 @@ function searchUser() {
     console.log(inputValue)
     if (inputValue != '') {
         getUser(inputValue)
+        getPerfilColor()
     } else {
         alert('digite um usuário valido do gitHub')
     }
@@ -29,6 +30,13 @@ function getUser(user) {
             }
         })
      .catch(error => console.log(error))
+}
+
+
+function getPerfilColor() {
+    const color = '#' + Math.floor(Math.random()*16777215).toString(16);
+    console.log(color) 
+    document.documentElement.style.setProperty('--color', `${color}`)
 }
 
 getUser("gapolveiro02")
