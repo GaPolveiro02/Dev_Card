@@ -9,7 +9,8 @@
     --dark:#292C35 ;
     --lightDark: #3a3e48;
     --light: #F1F1F1;
-    --lightBlue: #0875fb;
+    --blue: #196dd4;
+    --lightBlue: #1a81ff;
 }
 
 body {
@@ -26,23 +27,42 @@ header {
     justify-content: space-around;
     align-items: center;
     text-align: center;
+    font-size: 1rem;
+}
+
+#search {
+    display: flex;
+    justify-content: center;
 }
 
 input {
     border: none;
+    border-bottom: 2px solid var(--blue);
     height: 4vh;
     width: 15vw;
     text-align: center;
     background-color: var(--lightDark);
     border-radius: 2.5px;
+    margin-right: 10px;
+    font-size: 1rem;
+}
+
+input:focus {
+    border-bottom: 2px solid var(--lightBlue);
 }
 
 button {
-    height: 4vh;
+    height: 4.3vh;
     width: 6vw;
-    background-color: var(--lightBlue);
+    background-color: var(--blue);
+    font-size: 1rem;
     border: none;
     border-radius: 2.5px;
+}
+
+button:hover {
+    cursor: pointer;
+    background-color: var(--lightBlue);
 }
 
 main {
@@ -61,13 +81,20 @@ main {
     border-radius: 10px;
     align-items: center;
     justify-content: space-around;
-    border: 1px solid var(--lightBlue)
+    border: 2px solid var(--blue);
 }
 
+#card:hover {
+    border: 2px solid var(--lightBlue);
+}
 
 #devUser {
     font-size: 35px;
-    color: var(--lightBlue)
+    color: var(--blue);
+}
+
+#devUser:hover {
+    color: var(--lightBlue);
 }
 
 #userAvatar {
@@ -106,10 +133,18 @@ footer {
 }
 
 a {
-    color: var(--lightBlue);
+    color: var(--blue);
     text-decoration: none;
 }
 
+a:hover {
+    color: var(--lightBlue);
+}
+
 strong {
+    color: var(--blue);
+}
+
+strong:hover {
     color: var(--lightBlue);
 }
