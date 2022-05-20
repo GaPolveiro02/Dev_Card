@@ -9,7 +9,7 @@
     --dark:#292C35 ;
     --lightDark: #3a3e48;
     --light: #F1F1F1;
-    --blue: #196dd4;
+    --color: #196dd4;
     --lightBlue: #1a81ff;
 }
 
@@ -37,7 +37,7 @@ header {
 
 input {
     border: none;
-    border-bottom: 2px solid var(--blue);
+    border-bottom: 2px solid var(--color);
     height: 4vh;
     width: 15vw;
     text-align: center;
@@ -54,7 +54,7 @@ input:focus {
 button {
     height: 4.3vh;
     width: 6vw;
-    background-color: var(--blue);
+    background-color: var(--color);
     font-size: 1rem;
     border: none;
     border-radius: 2.5px;
@@ -81,7 +81,7 @@ main {
     border-radius: 10px;
     align-items: center;
     justify-content: space-around;
-    border: 2px solid var(--blue);
+    border: 2px solid var(--color);
 }
 
 #card:hover {
@@ -90,7 +90,7 @@ main {
 
 #devUser {
     font-size: 35px;
-    color: var(--blue);
+    color: var(--color);
 }
 
 #devUser:hover {
@@ -133,7 +133,7 @@ footer {
 }
 
 a {
-    color: var(--blue);
+    color: var(--color);
     text-decoration: none;
 }
 
@@ -142,7 +142,7 @@ a:hover {
 }
 
 strong {
-    color: var(--blue);
+    color: var(--color);
 }
 
 strong:hover {
