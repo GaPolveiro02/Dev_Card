@@ -24,6 +24,9 @@ function getUser(user) {
             if(data.location != null){
                 userLocation.textContent = `Location: ${data.location}`
             }
+            else{
+                userLocation.textContent = ``
+            }
         })
      .catch(error => console.log(error))
 }
