@@ -8,31 +8,52 @@
     <title>< DevCard /></title>
 </head>
 <body>
-    <header>
-        <h1>< <strong>Dev</strong>Card /<strong>></strong></h1>
-        <div>
-            <input id="input" type="text" placeholder="Search dev in github">
-            <button onclick="searchUser()">Search</button>
-        </div>
-    </header>
-
-    <main>
-        <div id="card">
-            <h2 id="devUser"></h2>
-            <img id="userAvatar" src="" alt="User Avatar">
-            <div id="profileInfo">
-                <p id="userName"></p>
-                <p id="userLocation"></p>
-                <p id="userRepos"></p>
-                <p id="userFollowers"></p>
-                <p id="userFollowing"></p>
+    <div class="container">
+        <header>
+            <h1>< <strong>Dev</strong>Card /<strong>></strong></h1>
+            <div id="search">
+                <input id="input" type="text" placeholder="Search dev in github">
+                <button onclick="searchUser()" class="button-outlined">Search</button>
             </div>
-        </div>
-    </main>
-
-    <footer>
-        <p>Made by <strong><a href="https://github.com/GaPolveiro02">GaPolveiro02 <img src="./assets/img/github.svg" alt="" srcset=""></a></strong></p>
-    </footer>
+        </header>
+    
+        <main>
+            <div id="card">
+                <div id="github-username">
+                    <img src="./assets/img/github.svg" alt="Github">
+                    <a href="" id="githubLink">
+                        <h2 id="devUser"></h2>
+                    </a>
+                </div>
+                <img id="userAvatar" src="" alt="Avatar">
+                <div id="profileInfo">
+                    <div>
+                        <span id="userName"></span>
+                    </div>
+                    <div>
+                        <img src="./assets/img/location.svg" alt="Localização">
+                        <span id="userLocation"></span>
+                    </div>
+                    <div>
+                        <img src="./assets/img/repository.svg" alt="Repositórios">
+                        <span id="userRepos"></span>
+                    </div>
+                    <div>
+                        <img src="./assets/img/followers.svg" alt="Seguidores">
+                        <span id="userFollowers"></span>
+                    </div>
+                    <div>
+                        <img src="./assets/img/followers.svg" alt="Seguindo">
+                        <span id="userFollowing"></span>
+                    </div>
+                </div>
+            </div>
+        </main>
+    
+        <footer>
+            <p>Made by <strong><a href="https://github.com/GaPolveiro02">GaPolveiro02 <img src="./assets/img/github.svg" alt="Github"></a></strong></p>
+        </footer>
+    </div>
 </body>
 <script src="main.js"></script>
 </html>
