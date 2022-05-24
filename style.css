@@ -1,22 +1,44 @@
 * {
     margin: 0;
     padding: 0;
+    border: none;
+    text-decoration: none;
+    box-sizing: border-box;
     color: var(--light);
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
-:root {
-    --dark:#292C35 ;
+html {
+    --dark:#0E1218 ;
     --lightDark: #3a3e48;
     --light: #F1F1F1;
     --color: #196dd4;
     --lightBlue: #1a81ff;
+
+    font-size: 62.5%;
 }
 
 body {
     height: 100vh;
-    width: 100vw;
     background-color: var(--dark);
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin: 0 auto;
+}
+
+div {
+    display: flex;
+    text-align: center;
+    line-height: 4rem;
+}
+
+div  img {
+    width: 2.5rem;
+    margin-right: 1rem;
 }
 
 header {
@@ -27,42 +49,58 @@ header {
     justify-content: space-around;
     align-items: center;
     text-align: center;
-    font-size: 1rem;
+    font-size: 1.8rem;
 }
 
 #search {
     display: flex;
     justify-content: center;
+    align-items: center;
+    line-height: 0;
 }
 
 input {
     border: none;
-    border-bottom: 2px solid var(--color);
-    height: 4vh;
-    width: 15vw;
+    border-bottom: .2rem solid var(--color);
+    height: 4.5rem;
+    width: 25rem;
     text-align: center;
     background-color: var(--lightDark);
-    border-radius: 2.5px;
+    border-radius: .25rem;
     margin-right: 10px;
-    font-size: 1rem;
+    font-size: 1.5rem;
+}
+
+input::placeholder {
+    color: var(--light);
 }
 
 input:focus {
-    border-bottom: 2px solid var(--lightBlue);
+    filter: brightness(1.2);
+    outline: none;
 }
 
 button {
-    height: 4.3vh;
-    width: 6vw;
+    height: 4.5rem;
+    width: 10rem;
     background-color: var(--color);
-    font-size: 1rem;
+    font-size: 1.5rem;
     border: none;
-    border-radius: 2.5px;
+    border-radius: .25rem;
+}
+
+.button-outlined {
+    height: 4.7rem;
+    background-color: transparent;
+    color: var(--color);
+    border: .2rem solid var(--color);
+    font-size: 1.8rem;
+    font-weight: 700;
 }
 
 button:hover {
     cursor: pointer;
-    background-color: var(--lightBlue);
+    filter: brightness(1.2);
 }
 
 main {
@@ -73,28 +111,32 @@ main {
     align-items: center;
 }
 
+#github-username {
+    display: flex;
+}
+
 #card {
     height: 70vh;
     width: 25vw;
     display: flex;
     flex-direction: column;
-    border-radius: 10px;
+    border-radius: 0 1rem 1rem 1rem;
     align-items: center;
     justify-content: space-around;
-    border: 2px solid var(--color);
+    border: .3rem solid var(--color);
 }
 
 #card:hover {
-    border: 2px solid var(--lightBlue);
+    filter: brightness(1.2);
 }
 
 #devUser {
-    font-size: 35px;
     color: var(--color);
+    font-size: 3.5rem;
 }
 
 #devUser:hover {
-    color: var(--lightBlue);
+    filter: brightness(1.2);
 }
 
 #userAvatar {
@@ -104,13 +146,18 @@ main {
 }
 
 #userName {
-    font-size: 30px;
+    font-size: 3rem;
     font-weight: 500;
 }
 
 #profileInfo {
     box-sizing: border-box;
-    font-size: 18px;
+    font-size: 1.8rem;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
 }
 
 #userBio {
@@ -128,7 +175,7 @@ footer {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 20px;
+    font-size: 2.2rem;
     text-align: center;
 }
 
@@ -138,7 +185,7 @@ a {
 }
 
 a:hover {
-    color: var(--lightBlue);
+    filter: brightness(1.2);
 }
 
 strong {
@@ -146,5 +193,5 @@ strong {
 }
 
 strong:hover {
-    color: var(--lightBlue);
+    filter: brightness(1.2);
 }
