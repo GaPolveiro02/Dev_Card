@@ -13,7 +13,6 @@ html {
     --lightDark: #3a3e48;
     --light: #F1F1F1;
     --color: #196dd4;
-    --lightBlue: #1a81ff;
 
     font-size: 62.5%;
 }
@@ -24,15 +23,12 @@ body {
 }
 
 .container {
-    display: flex;
     flex-direction: column;
     width: 100%;
     margin: 0 auto;
 }
 
 div {
-    display: flex;
-    text-align: center;
     line-height: 4rem;
 }
 
@@ -44,18 +40,21 @@ div  img {
 header {
     height: 10vh;
     width: 100vw;
-    display: flex;
     flex-direction: row;
     justify-content: space-around;
-    align-items: center;
-    text-align: center;
     font-size: 1.8rem;
 }
 
-#search {
+header, div, main, footer,
+#search, #profileInfo, #github-username, #card,
+.container {
     display: flex;
-    justify-content: center;
+    text-align: center;
     align-items: center;
+}
+
+#search {
+    justify-content: center;
     line-height: 0;
 }
 
@@ -98,26 +97,15 @@ button {
     font-weight: 700;
 }
 
-button:hover {
-    cursor: pointer;
-    filter: brightness(1.2);
-}
-
 main {
     height: 80vh;
     width: 100vw;
-    display: flex;
     justify-content: center;
-    align-items: center;
-}
-
-#github-username {
-    display: flex;
 }
 
 #card {
-    height: 70vh;
-    width: 25vw;
+    height: 90%;
+    width: 25%;
     display: flex;
     flex-direction: column;
     border-radius: 0 1rem 1rem 1rem;
@@ -132,41 +120,105 @@ main {
 
 #devUser {
     color: var(--color);
-    font-size: 3.5rem;
-}
-
-#devUser:hover {
-    filter: brightness(1.2);
+    font-size: 3rem;
 }
 
 #userAvatar {
-    height: 20vh;
-    width: 12vw;
-    border-radius: 150px;
+    width: 18rem;
+    border-radius: 150rem;
 }
 
 #userName {
-    font-size: 3rem;
+    font-size: 2.5rem;
     font-weight: 500;
 }
 
 #profileInfo {
     box-sizing: border-box;
-    font-size: 1.8rem;
-    display: flex;
-    align-items: center;
+    font-size: 1.7rem;
     flex-direction: column;
     text-align: center;
     justify-content: center;
 }
 
+#profileInfo > div {
+    display: flex;
+    align-items: center;
+}
+
 #userBio {
-    font-size: 15px;
+    font-size: 1.5rem;
 }
 
 #userFollows {
     display: flex;
     justify-content: space-between;
+}
+
+#secondCard {
+    height: 60%;
+    width: 20%;
+    display: none;
+    flex-direction: column;
+    justify-content: flex-start;
+    border-radius: 0 1rem 1rem 1rem;
+    align-items: center;
+    border: .3rem solid var(--color);
+    margin-left: 2rem;
+}
+
+#secondCard > div {
+    width: 100%;
+    color: var(--light);
+    padding: 0 2rem;
+    justify-content: space-between;
+    background-color: var(--color);
+    top: 0;
+}
+
+#secondCard #headerCard h2 {
+    font-size: 1.8rem;
+}
+
+#secondCard #headerCard span {
+    font-size: 1.8rem;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+ul {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    height: 45rem;
+    list-style: none;
+    font-size: 1.8rem;
+    overflow: hidden;
+    overflow-y: scroll;
+    padding: 2rem 2rem;
+}
+
+ul::-webkit-scrollbar {
+    display: none;
+}
+
+ul > li {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    text-align: center;
+}
+
+ul li > a {
+    color: var(--light);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+} 
+
+ul li a > img {
+    width: 3rem;
+    border-radius: 3rem;
 }
 
 footer {
@@ -179,19 +231,20 @@ footer {
     text-align: center;
 }
 
-a {
-    color: var(--color);
+footer p strong > a {
     text-decoration: none;
 }
 
-a:hover {
-    filter: brightness(1.2);
+footer p strong > a {
+    width: 1.8rem;
 }
 
-strong {
+strong, a {
     color: var(--color);
 }
 
-strong:hover {
+strong:hover, a:hover, button:hover,
+#devUser:hover, #repos:hover {
+    cursor: pointer;
     filter: brightness(1.2);
 }
