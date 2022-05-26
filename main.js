@@ -1,4 +1,18 @@
 const url = 'https://api.github.com/users/'
+const repositories = document.querySelector('#repos')
+const followers = document.querySelector('#followers')
+
+repositories.addEventListener("click", () => {
+    const user = document.querySelector('#devUser').textContent
+    hideCard()
+    getUserRepos(`${url}${user}`)
+})
+
+followers.addEventListener("click", () => {
+    const user = document.querySelector('#devUser').textContent
+    hideCard()
+    getUserFollowers(`${url}${user}`)
+})
 
 function searchUser() {
     const inputValue = document.querySelector('#input').value
@@ -7,13 +21,14 @@ function searchUser() {
     if (inputValue != '') {
         getUser(inputValue)
         getPerfilColor()
+        hideCard()
     } else {
         alert('digite um usuário valido do gitHub')
     }
 }
 
 function getUser(user) {
-    let searchUrl = `${url}${user}`;
+    const searchUrl = `${url}${user}`;
 
     fetch(searchUrl)
      .then(response => response.json())
@@ -32,8 +47,7 @@ function getUser(user) {
             else{
                 userLocation.textContent = `?`
             }
-
-            getUserRepos(searchUrl)
+            console.log(searchUrl)
         })
      .catch(error => console.log(error));
 }
@@ -44,10 +58,9 @@ function getPerfilColor() {
     document.documentElement.style.setProperty('--color', `${color}`)
 }
 
-function getUserRepos(searchUrl) {
-    const reposUrl = `${searchUrl}/repos`
-
-    console.log(reposUrl)
+function getUserRepos(url) {
+    console.log(url)
+    const reposUrl = `${url}/repos`
 
     fetch(reposUrl)
     .then(response => response.json())
@@ -61,23 +74,55 @@ function getUserRepos(searchUrl) {
                 ${repo.name}
             </a>`
 
-            reposUl.append(li)
+            cardUl.append(li)
         });
     })
 }
 
-function hideRepos() {
-    const reposCard = document.querySelector('#reposCard')
-    
-    console.log(reposCard.style)
+function getUserFollowers(url) {
+    const followersUrl = `${url}/followers`
 
-    if(reposCard.style.display == '') {
-        reposCard.style.display = 'flex'
-    }else if(reposCard.style.display == 'none') {
-        reposCard.style.display = 'flex'
+    fetch(followersUrl)
+    .then(response => response.json())
+    .then(data => {
+        data.forEach(follower => {
+            let li = document.createElement('li')
+            li.setAttribute('class', 'item')
+            li.innerHTML = 
+            `<a href="${follower.html_url}" target="_blank">
+                <img src="${follower.avatar_url}" alt="Repositórios">
+                ${follower.login}
+            </a>`
+
+            cardUl.append(li)
+        })
+    })
+}
+
+function hideCard() {
+    const xButton = document.querySelector("#closeCard")
+    const secondCard = document.querySelector('#secondCard') 
+    const cardDisplay = secondCard.style.display
+    
+    if(cardDisplay == '' || cardDisplay == 'none') {
+        secondCard.style.display = 'flex'
     }else {
-        reposCard.style.display = 'none'
+        const li = document.querySelectorAll('li')
+        secondCard.style.display = 'none'
+        
+        for(let i=0; i<= li.length; i++) {
+            li[i].parentNode.removeChild(li[i])
+        }
     }
+
+    xButton.addEventListener("click", () => {
+        const li = document.querySelectorAll('li')
+        secondCard.style.display = 'none'
+        
+        for(let i=0; i<= li.length; i++) {
+            li[i].parentNode.removeChild(li[i])
+        }
+    })
 }
 
 getUser("gapolveiro02")
