@@ -1,6 +1,7 @@
 const url = 'https://api.github.com/users/'
 const repositories = document.querySelector('#repos')
 const followers = document.querySelector('#followers')
+const following = document.querySelector('#following')
 
 repositories.addEventListener("click", () => {
     const user = document.querySelector('#devUser').textContent
@@ -14,6 +15,12 @@ followers.addEventListener("click", () => {
     getUserFollowers(`${url}${user}`)
 })
 
+following.addEventListener("click", () => {
+    const user = document.querySelector('#devUser').textContent
+    hideCard()
+    getUserFollows(`${url}${user}`)
+})
+
 function searchUser() {
     const inputValue = document.querySelector('#input').value
 
@@ -21,7 +28,6 @@ function searchUser() {
     if (inputValue != '') {
         getUser(inputValue)
         getPerfilColor()
-        hideCard()
     } else {
         alert('digite um usuário valido do gitHub')
     }
@@ -37,6 +43,7 @@ function getUser(user) {
             devUser.textContent = data.login
             githubLink.href = data.html_url
             userAvatar.src = data.avatar_url
+            userBio.textContent = data.bio
             userRepos.textContent = `Public repositories ${data.public_repos}`
             userFollowers.textContent = `Followers ${data.followers}`
             userFollowing.textContent = `Following ${data.following}`
@@ -81,6 +88,26 @@ function getUserRepos(url) {
 
 function getUserFollowers(url) {
     const followersUrl = `${url}/followers`
+
+    fetch(followersUrl)
+    .then(response => response.json())
+    .then(data => {
+        data.forEach(follower => {
+            let li = document.createElement('li')
+            li.setAttribute('class', 'item')
+            li.innerHTML = 
+            `<a href="${follower.html_url}" target="_blank">
+                <img src="${follower.avatar_url}" alt="Repositórios">
+                ${follower.login}
+            </a>`
+
+            cardUl.append(li)
+        })
+    })
+}
+
+function getUserFollows(url) {
+    const followersUrl = `${url}/following`
 
     fetch(followersUrl)
     .then(response => response.json())
