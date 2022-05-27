@@ -2,6 +2,7 @@ const url = 'https://api.github.com/users/'
 const repositories = document.querySelector('#repos')
 const followers = document.querySelector('#followers')
 const following = document.querySelector('#following')
+const secondCardTitle = document.querySelector('#headerCard h2')
 
 repositories.addEventListener("click", () => {
     const user = document.querySelector('#devUser').textContent
@@ -18,7 +19,7 @@ followers.addEventListener("click", () => {
 following.addEventListener("click", () => {
     const user = document.querySelector('#devUser').textContent
     hideCard()
-    getUserFollows(`${url}${user}`)
+    getUserFollowing(`${url}${user}`)
 })
 
 function searchUser() {
@@ -66,7 +67,7 @@ function getPerfilColor() {
 }
 
 function getUserRepos(url) {
-    console.log(url)
+    secondCardTitle.textContent = 'Repositories'
     const reposUrl = `${url}/repos`
 
     fetch(reposUrl)
@@ -87,6 +88,7 @@ function getUserRepos(url) {
 }
 
 function getUserFollowers(url) {
+    secondCardTitle.textContent = 'Followers'
     const followersUrl = `${url}/followers`
 
     fetch(followersUrl)
@@ -106,7 +108,8 @@ function getUserFollowers(url) {
     })
 }
 
-function getUserFollows(url) {
+function getUserFollowing(url) {
+    secondCardTitle.textContent = 'Following'
     const followersUrl = `${url}/following`
 
     fetch(followersUrl)
