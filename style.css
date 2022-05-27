@@ -53,6 +53,11 @@ header, div, main, footer,
     align-items: center;
 }
 
+#github-username a {
+    display: flex;
+    flex-direction: row;
+}
+
 #search {
     justify-content: center;
     line-height: 0;
@@ -104,13 +109,14 @@ main {
 }
 
 #card {
-    height: 90%;
+    height: min(90%, 100%);
     width: 25%;
     display: flex;
     flex-direction: column;
     border-radius: 0 1rem 1rem 1rem;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-between;
+    padding: 3rem;
     border: .3rem solid var(--color);
 }
 
@@ -126,7 +132,7 @@ main {
 
 #userName {
     font-size: 2.5rem;
-    font-weight: 500;
+    font-weight: 400;
 }
 
 #profileInfo {
@@ -140,10 +146,7 @@ main {
 #profileInfo > div {
     display: flex;
     align-items: center;
-}
-
-#profileInfo #bio {
-    padding: 0 3rem;
+    padding: .5rem 3rem;
 }
 
 #userBio {
@@ -158,8 +161,13 @@ main {
 
 #repos:hover, #followers:hover, #following:hover {
     cursor: pointer;
-    filter: brightness(1.6);
     border-bottom: .1rem solid var(--color);
+    box-sizing: content-box;
+}
+
+#repos span:hover, #followers span:hover, #following span:hover {
+    filter: brightness(1.6);
+
 }
 
 #secondCard {
