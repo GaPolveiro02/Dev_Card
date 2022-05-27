@@ -114,10 +114,6 @@ main {
     border: .3rem solid var(--color);
 }
 
-#card:hover {
-    filter: brightness(1.2);
-}
-
 #devUser {
     color: var(--color);
     font-size: 3rem;
@@ -146,13 +142,24 @@ main {
     align-items: center;
 }
 
+#profileInfo #bio {
+    padding: 0 3rem;
+}
+
 #userBio {
-    font-size: 1.5rem;
+    font-size: 1.7rem;
+    word-wrap: break-word;
 }
 
 #userFollows {
     display: flex;
     justify-content: space-between;
+}
+
+#repos:hover, #followers:hover, #following:hover {
+    cursor: pointer;
+    filter: brightness(1.6);
+    border-bottom: .1rem solid var(--color);
 }
 
 #secondCard {
