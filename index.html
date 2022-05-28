@@ -13,15 +13,16 @@
             <h1>< <strong>Dev</strong>Card /<strong>></strong></h1>
             <div id="search">
                 <input id="input" type="text" placeholder="Search dev in github">
-                <button onclick="searchUser()" class="button-outlined">Search</button>
+                <button onclick="searchUser('inputValue')" class="button-outlined">Search</button>
+                <button id="changeColorButton" class="button">Change color</button>
             </div>
         </header>
     
         <main>
             <div id="card">
                 <div id="github-username">
-                    <img src="./assets/img/github.svg" alt="Github">
                     <a href="" target="_blank" id="githubLink">
+                        <img src="./assets/img/github.svg" alt="Github">
                         <h2 id="devUser"></h2>
                     </a>
                 </div>
@@ -54,7 +55,7 @@
 
             <div id="secondCard">
                 <div id="headerCard">
-                    <h2>Repositories</h2>
+                    <h2></h2>
                     <span id="closeCard">X</span>
                 </div>
                 <ul id="cardUl">
