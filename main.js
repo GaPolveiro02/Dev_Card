@@ -1,40 +1,45 @@
 const url = 'https://api.github.com/users/'
-const repositories = document.querySelector('#repos')
-const followers = document.querySelector('#followers')
-const following = document.querySelector('#following')
-const secondCardTitle = document.querySelector('#headerCard h2')
+const repositoriesButton = document.querySelector('#repos');
+const followersButton = document.querySelector('#followers');
+const followingButton = document.querySelector('#following');
+const secondCardTitle = document.querySelector('#headerCard h2');
+const changeColorButton  = document.querySelector('#changeColorButton');
 
-repositories.addEventListener("click", () => {
+
+repositoriesButton.addEventListener("click", () => {
     const user = document.querySelector('#devUser').textContent
     hideCard()
-    getUserRepos(`${url}${user}`)
+    getUserInfos(`${url}`, `${user}`, 'repos')
 })
 
-followers.addEventListener("click", () => {
+followersButton.addEventListener("click", () => {
     const user = document.querySelector('#devUser').textContent
     hideCard()
-    getUserFollowers(`${url}${user}`)
+    getUserInfos(`${url}`, `${user}`, 'followers')
 })
 
-following.addEventListener("click", () => {
+followingButton.addEventListener("click", () => {
     const user = document.querySelector('#devUser').textContent
     hideCard()
-    getUserFollowing(`${url}${user}`)
+    getUserInfos(`${url}`, `${user}`, 'following')
 })
 
-function searchUser() {
-    const inputValue = document.querySelector('#input').value
+changeColorButton.addEventListener("click", () => {
+    getPerfilColor()
+})
 
-    console.log(inputValue)
+const searchUser = () => {
+    const inputValue = document.querySelector('input').value
+
     if (inputValue != '') {
-        getUser(inputValue)
+        getUser(`${url}`,inputValue)
         getPerfilColor()
     } else {
         alert('digite um usuário valido do gitHub')
     }
 }
 
-function getUser(user) {
+const getUser = (url,user) => {
     const searchUrl = `${url}${user}`;
 
     fetch(searchUrl)
@@ -60,76 +65,56 @@ function getUser(user) {
      .catch(error => console.log(error));
 }
 
-function getPerfilColor() {
-    const color = '#' + Math.floor(Math.random()*16777215).toString(16);
-
-    document.documentElement.style.setProperty('--color', `${color}`)
+const getPerfilColor = () => {
+    const element = document.querySelector('html')
+    const style = getComputedStyle(element)
+    const actualColor = style.getPropertyValue('--color')
+    const generatedColor = '#' + Math.floor(Math.random()*16777215).toString(16);
+    
+    if (generatedColor == actualColor || generatedColor == 'rgba(255, 0, 0, 0)') {
+        getPerfilColor()
+    } else {       
+        document.documentElement.style.setProperty('--color', `${generatedColor}`)
+    }
 }
 
-function getUserRepos(url) {
-    secondCardTitle.textContent = 'Repositories'
-    const reposUrl = `${url}/repos`
+const getUserInfos = (url, user, query) => {
+    const queryUrl = `${url}${user}/${query}`
+    secondCardTitle.textContent = `${query}`
 
-    fetch(reposUrl)
+    fetch(queryUrl)
     .then(response => response.json())
     .then(data => {
-        data.forEach(repo => {
-            let li = document.createElement('li')
-            li.setAttribute('class','item')
-            li.innerHTML = 
-            `<a href="${repo.html_url}" target="_blank">
-                <img src="./assets/img/repository.svg" alt="Repositórios">
-                ${repo.name}
-            </a>`
-
-            cardUl.append(li)
-        });
-    })
-}
-
-function getUserFollowers(url) {
-    secondCardTitle.textContent = 'Followers'
-    const followersUrl = `${url}/followers`
-
-    fetch(followersUrl)
-    .then(response => response.json())
-    .then(data => {
-        data.forEach(follower => {
+        data.forEach(el => {
             let li = document.createElement('li')
             li.setAttribute('class', 'item')
-            li.innerHTML = 
-            `<a href="${follower.html_url}" target="_blank">
-                <img src="${follower.avatar_url}" alt="Repositórios">
-                ${follower.login}
-            </a>`
+
+            if (query == "followers") {
+                li.innerHTML = 
+                `<a href="${el.html_url}" target="_blank">
+                    <img src="${el.avatar_url}" alt="Seguidores">
+                    ${el.login}
+                </a>` 
+            } else if(query == "following") {
+                li.innerHTML = 
+                `<a href="${el.html_url}" target="_blank">
+                    <img src="${el.avatar_url}" alt="Seguindo">
+                    ${el.login}
+                </a>`
+            } else {
+                li.innerHTML = 
+                `<a href="${el.html_url}" target="_blank">
+                    <img src="./assets/img/repository.svg" alt="Repositórios">
+                    ${el.name}
+                </a>`
+            }
 
             cardUl.append(li)
         })
     })
 }
 
-function getUserFollowing(url) {
-    secondCardTitle.textContent = 'Following'
-    const followersUrl = `${url}/following`
-
-    fetch(followersUrl)
-    .then(response => response.json())
-    .then(data => {
-        data.forEach(follower => {
-            let li = document.createElement('li')
-            li.setAttribute('class', 'item')
-            li.innerHTML = 
-            `<a href="${follower.html_url}" target="_blank">
-                <img src="${follower.avatar_url}" alt="Repositórios">
-                ${follower.login}
-            </a>`
-
-            cardUl.append(li)
-        })
-    })
-}
-
-function hideCard() {
+const hideCard = () => {
     const xButton = document.querySelector("#closeCard")
     const secondCard = document.querySelector('#secondCard') 
     const cardDisplay = secondCard.style.display
@@ -155,4 +140,4 @@ function hideCard() {
     })
 }
 
-getUser("gapolveiro02")
+getUser(url, "gapolveiro02")
