@@ -85,10 +85,11 @@ input:focus {
 }
 
 button {
-    height: 4.5rem;
-    width: 10rem;
+    height: 4.6rem;
+    width: 12rem;
     background-color: var(--color);
     font-size: 1.5rem;
+    font-weight: 700;
     border: none;
     border-radius: .25rem;
 }
@@ -99,7 +100,7 @@ button {
     color: var(--color);
     border: .2rem solid var(--color);
     font-size: 1.8rem;
-    font-weight: 700;
+    margin-right: 1rem;
 }
 
 main {
